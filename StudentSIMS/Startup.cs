@@ -29,12 +29,13 @@ namespace StudentSIMS
         {
             var connection = Configuration.GetConnectionString("schoolSIMSConnection");
             services.AddDbContext<StudentContext>(options => options.UseSqlServer(connection));
+            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StudentSIMS", Version = "v1" });
             });
             services.AddCors();
-            services.AddControllers();
+
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -61,6 +62,13 @@ namespace StudentSIMS
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My first API V1");
                 c.RoutePrefix = string.Empty; // launch swagger from root
             });
+
+            app.UseCors(builder => builder
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .SetIsOriginAllowed((host) => true)
+                .AllowCredentials()
+            );
         }
     }
 }
