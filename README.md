@@ -28,6 +28,3 @@ Two database tables are created by migrating from [Student](./StudentSIMS/Models
 
 <img src="./docs/AddressAPI.png" alt="" width="800px">
 
-## Learning Modules
-
-The required microsoft learn modules have been completed - see [My Microsoft Profile - Achievements](https://docs.microsoft.com/en-us/users/anranniu-3747/achievements).
